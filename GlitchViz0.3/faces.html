@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faces from the Van Abbemuseum Collection</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+
+</head>
+<body>
+<div id="app">
+    <div class="container-fluid" id="mygallery" >
+
+
+    <!--Space for iterative image construction-->
+
+    <div  v-for="(result, index) in filteredResults" v-cloak >
+
+            <div  v-if="result.googlecloud.faceAnnotations">
+                <div class="row move pt-5 mt-5 pl-5 ml-5">
+
+
+                <a v-bind:href="result.linkImage">
+
+                <img id="whatever" v-bind:src="result.linkImage" width="500" v-bind:style="{'clip': 'rect(' + result.googlecloud.faceAnnotations[0].boundingPoly.vertices[1].y + 'px,' + result.googlecloud.faceAnnotations[0].boundingPoly.vertices[1].x + 'px,' + result.googlecloud.faceAnnotations[0].boundingPoly.vertices[3].y + 'px,' + result.googlecloud.faceAnnotations[0].boundingPoly.vertices[0].x + 'px', 'position': 'absolute'}"/>
+                </a>
+                </div>
+
+            </div>
+    </div>
+
+
+
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.js"></script>
+
+
+
+</script>
+</body>
+</html>
