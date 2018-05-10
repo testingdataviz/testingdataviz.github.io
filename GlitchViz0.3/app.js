@@ -15,9 +15,8 @@ const vm = new Vue({
     methods: {
         getResults(section) {
             axios.get(jsonURL).then((response) => {
-                this.results =  response.data.filter(function(item) {
-                    return item !== null;
-                });
+                this.results =  response.data
+                    return results
 
         }).catch( error => { console.log(error); });
         }
