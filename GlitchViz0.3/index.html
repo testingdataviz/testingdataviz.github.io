@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
-    <title>The GlitchVisualizer Vue Version</title>
+    <title>Virtual Art Decoder</title>
 
     <!--Adding Bootstrap for styling-->
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
@@ -19,7 +19,7 @@
 
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <div class="container">
-        <a href="../" class="navbar-brand">GlitchVisualizer v0.3</a>
+        <a href="../" class="navbar-brand">Virtual Art Decoder v0.4</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,14 +41,17 @@
 
 
     <div v-for="(result, index) in filteredResults" v-cloak >
-
         <!--Header = Microsoft Azure Caption-->
         <div class="card border-secondary mt-1" style="width: 100%;">
             <div class="card-header">
-                <div style="display:flex; align-items: baseline;">
+                <div v-if="result.microsoftazure.main.description.captions" style="display:flex; align-items: baseline;">
                     <h4 class="mr-2 text-muted" > #{{ index+1 }} </h4>
                     <h4 class="card-title">{{result.microsoftazure.main.description.captions[0].text}}</h4>
                     <span class="badge badge-info ml-2">{{result.microsoftazure.main.description.captions[0].confidence | toPercentage}}</span>
+                </div>
+                <div v-else>
+                    <h4 class="mr-2 text-muted" > #{{ index+1 }} </h4>
+
                 </div>
             </div>
 
@@ -137,7 +140,7 @@
                                             </div>
                                         </div>
 
-                                </div>
+                                </div>This
 
                                     <!--This is Google Web Detection Results-->
                                     <!--Best Guess Label-->
@@ -370,7 +373,7 @@
                 </div>
 
 
-            </div>
+        </div>
     </div>
 </div>
 <!--// scripts-->
