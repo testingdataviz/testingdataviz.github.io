@@ -1,4 +1,4 @@
-const jsonURL = "glitch.json"
+const jsonURL = "https://glitchvisualizer.firebaseio.com/reduced.json?print=pretty"
 
 
 
