@@ -99,6 +99,7 @@
                                     <a class="nav-item nav-link"  data-toggle="tab" v-bind:href="'#nav-microsoft' + index" role="tab" aria-controls="nav-microsoft" aria-selected="false">Microsoft Azure</a>
                                     <a class="nav-item nav-link"  data-toggle="tab" v-bind:href="'#nav-amazon' + index" role="tab" aria-controls="nav-amazon" aria-selected="false">Amazon Rekognition</a>
                                     <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-ibm' + index" role="tab" aria-controls="nav-ibm" aria-selected="false">IBM Watson</a>
+                                    <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-facebook' + index" role="tab" aria-controls="nav-facebook" aria-selected="false">Facebook Detectron</a>
                                 </div>
                             </nav>
 
@@ -378,7 +379,13 @@
 
                                 </div>
 
-                            </div>
+                                <!--FACEBOOK RESULTS-->
+                                <div  class="tab-pane fade"  :id="'nav-facebook' + index" role="tabpanel" aria-labelledby="nav-ibm-facebook">
+                                    <img v-bind:src="result.linkImage.replace(' .jpg', '.jpg') + '+det.jpeg'" class="img-fluid" alt="Responsive image">
+                                </div>
+
+
+                                </div>
 
                         </div>
 
