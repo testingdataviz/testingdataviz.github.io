@@ -19,12 +19,20 @@
 
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <div class="container">
-        <a href="../" class="navbar-brand">Virtual Art Decoder v0.4</a>
+        <a href="../" class="navbar-brand">Virtual Art Decoder (Platform) v0.4</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="similar.html">Similar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Faces</a>
+                </li>
+            </ul>
 
             <ul class="nav navbar-nav ml-auto" style="display:flex; align-items: baseline; color: #eaf1f1">
                 From
@@ -162,7 +170,7 @@
                                             </div>
                                         </div>
 
-                                </div>This
+                                </div>
 
                                     <!--This is Google Web Detection Results-->
                                     <!--Best Guess Label-->
@@ -211,17 +219,21 @@
                                     </div>
 
                                     <!--Color Google TBC-->
-<!--
-                                    <div class="row">
-                                        <div class="col-md-a</strong>uto">
-                                            <div class="col-md-auto"  v-for="(colors, colorind) in result.googlecloud.imagePropertiesAnnotation.dominantColors.colors">
-                                               <p>{{colors.color.red}}</p>
-                                                <div class="col-md-auto">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
--->
+
+                                        <!--<div v-if="result.googlecloud.imagePropertiesAnnotation.dominantColors.colors">-->
+                                            <!--<div :id="'color' + index" style="display:flex; align-items: baseline;">-->
+
+                                            <!--<div  v-for="(colors, colorind) in result.googlecloud.imagePropertiesAnnotation.dominantColors.colors">-->
+
+                                                    <!--<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" v-bind:width="colors.pixelFraction * 100" height="50">-->
+                                                        <!--<rect width="100" height="20" v-bind:fill="rgbToHex(colors.color.red, colors.color.green, colors.color.blue)"></rect>-->
+                                                    <!--</svg>-->
+
+                                            <!--</div>-->
+                                            <!--</div>-->
+
+                                        <!--</div>-->
+
 
                                 </div>
 
@@ -422,6 +434,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+<script src="colorbar.js"></script>
 <!--//end scripts-->
 
 <script>
