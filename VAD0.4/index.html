@@ -109,6 +109,7 @@
                                     <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-ibm' + index" role="tab" aria-controls="nav-ibm" aria-selected="false">IBM Watson</a>
                                     <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-facebook' + index" role="tab" aria-controls="nav-facebook" aria-selected="false">Facebook Detectron</a>
                                     <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-yolo' + index" role="tab" aria-controls="nav-yolo" aria-selected="false">Darknet YOLO</a>
+                                    <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-turk' + index" role="tab" aria-controls="nav-turk" aria-selected="false">Amazon Mechanical Turk</a>
                                 </div>
                             </nav>
 
@@ -402,6 +403,43 @@
                                     <img v-bind:src="result.linkImage.replace('https://s3.amazonaws.com/glitchvisualizer/', 'https://s3.amazonaws.com/glitchvisualizer/yolot25/').replace('.jpg','.png')"  class="img-fluid" alt="Responsive image">
                                     <br>
                                     <a target="_blank" v-bind:href="result.linkImage.replace('https://s3.amazonaws.com/glitchvisualizer/', 'https://s3.amazonaws.com/glitchvisualizer/yolot1/').replace('.jpg','.png')">Fake YOLO</a>
+                                </div>
+
+                                <!--TURK RESULTS-->
+                                <div  class="tab-pane fade"  :id="'nav-turk' + index" role="tabpanel" aria-labelledby="nav-turk">
+
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">What do you think</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Is this Art?</th>
+                                            <th scope="col">Have you been paid fairly?</th>
+                                            <th scope="col">Completion time (seconds)</th>
+                                            <th scope="col">Reward</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody v-for="(turkResult, turkIndex) in turkResults">
+
+
+                                            <tr  v-if="result.linkImage == turkResult.Inputimage_url.replace('%20', ' ')">
+                                                <td>{{turkResult.Answerwhatyouthink}}</td>
+                                                <td>
+                                                    <ul class="">
+                                                        <li class="">{{turkResult.Answerdescription1}}</li>
+                                                        <li class="">  {{turkResult.Answertag2}}</li>
+                                                        <li class=""> {{turkResult.Answertag3}}</li>
+                                                    </ul>
+                                                </td>
+                                                <td>{{turkResult.Answerisart}}</td>
+                                                <td>{{turkResult.Answerisfair}}</td>
+                                                <td>{{turkResult.WorkTimeInSeconds}}</td>
+                                                <td class="text-danger">{{turkResult.Reward}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
                                 </div>
 
 
