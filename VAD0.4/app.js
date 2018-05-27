@@ -1,6 +1,6 @@
 const jsonURL = "https://glitchvisualizer.firebaseio.com/newglitch.json"
 const turkURL = "https://api.myjson.com/bins/r3wy6"
-
+const workURL = "https://api.myjson.com/bins/13ol8u"
 
 // const jsonURL = "https://glitchvisualizer.firebaseio.com/reduced.json?print=pretty"
 
@@ -14,11 +14,13 @@ const vm = new Vue({
         search: '',
         lowPoint: 1,
         highPoint: 10,
-        turkResults: []
+        turkResults: [],
+        workResults: [],
     },
     mounted() {
         this.getResults();
         this.getResultsTurk();
+        this.getWorksNames();
     },
     methods: {
         getResults() {
@@ -34,6 +36,13 @@ const vm = new Vue({
             axios.get(turkURL).then((response) => {
                 preResTurk =  response.data;
                 this.turkResults =  preResTurk;
+
+            }).catch( error => { console.log(error); });
+        },
+        getWorksNames() {
+            axios.get(workURL).then((response) => {
+                preResWork =  response.data;
+                this.workResults =  preResWork;
 
             }).catch( error => { console.log(error); });
         }

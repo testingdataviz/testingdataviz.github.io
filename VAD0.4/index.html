@@ -58,8 +58,6 @@
 
 <div class="container-fluid pl-5 pr-5" >
 
-
-
     <div v-for="(result, index) in filteredResults" v-cloak >
         <!--Header = Microsoft Azure Caption-->
         <div class="card border-secondary mt-1" style="width: 100%;">
@@ -67,19 +65,34 @@
                 <div v-if="result.microsoftazure">
                     <div v-if="result.microsoftazure.main.description">
                         <div v-if="result.microsoftazure.main.description.captions" style="display:flex; align-items: baseline;">
-                        <h4 class="mr-2 text-muted" > #{{ result.linkImage }} </h4>
-                        <h4 class="card-title">{{result.microsoftazure.main.description.captions[0].text}}</h4>
+                            <h4 class="text-muted" v-for="workResult in workResults">
+                                <span class="mr-2" v-if="workResult.linkImg == result.linkImage">
+                                    {{workResult.work_name}}
+                                </span>
+                            </h4>
+                            <h4 class="mr-2 text-success" > #{{ result.linkImage.replace('https://s3.amazonaws.com/glitchvisualizer/','') }} </h4>
+                            <h4 class="card-title">{{result.microsoftazure.main.description.captions[0].text}}</h4>
                         <span class="badge badge-info ml-2">{{result.microsoftazure.main.description.captions[0].confidence | toPercentage}}</span>
                         </div>
-                        <div v-else>
-                            <h4 class="mr-2 text-muted" > #{{ result.linkImage }} </h4>
+                        <div v-else style="display:flex; align-items: baseline;">
+                            <h4 class="text-muted" v-for="workResult in workResults">
+                                <span class="mr-2" v-if="workResult.linkImg == result.linkImage">
+                                    {{workResult.work_name}}
+                                </span>
+                            </h4>
+                            <h4 class="mr-2 text-success" > #{{ result.linkImage.replace('https://s3.amazonaws.com/glitchvisualizer/','') }} </h4>
 
                         </div>
                     </div>
                 </div>
                 <div v-else>
-                    <h4 class="mr-2 text-muted" > #{{ result.linkImage }} </h4>
 
+                    <h4 class="mr-2 text-success" > #{{ result.linkImage.replace('https://s3.amazonaws.com/glitchvisualizer/','') }} </h4>
+                    <h4 class="ml-2 text-muted" v-for="workResult in workResults">
+                                <span class="mr-2" v-if="workResult.linkImg == result.linkImage">
+                                    {{workResult.work_name}}
+                                </span>
+                    </h4>
                 </div>
             </div>
 
