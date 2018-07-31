@@ -1,5 +1,6 @@
 const jsonURL = "https://bienal-art-analyser.herokuapp.com/api/collection/2/?format=json"
 
+const jsonCollections = "https://bienal-art-analyser.herokuapp.com/api/collection/?format=json"
 
 
 
@@ -7,6 +8,7 @@ const vm = new Vue({
     el: '#app',
     data: {
         results: [],
+        collresults: [],
         value: 0,
         search: '',
         lowPoint: 1,
@@ -16,12 +18,20 @@ const vm = new Vue({
     },
     mounted() {
         this.getResults();
+        this.getCollections();
     },
     methods: {
         getResults() {
             axios.get(jsonURL).then((response) => {
                 preRes =  response.data;
                 this.results =  preRes;
+
+            }).catch( error => { console.log(error); });
+        },
+        getCollections() {
+            axios.get(jsonCollections).then((response) => {
+                preColl =  response.data;
+                this.collresults =  preColl;
 
             }).catch( error => { console.log(error); });
         }
