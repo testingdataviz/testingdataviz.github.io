@@ -1,6 +1,6 @@
-const jsonURL = "https://bienal-art-analyser.herokuapp.com/api/collection/2/?format=json"
+const jsonURL = "http://art-decoder.bienal.berinfontes.com/api/collection/2/?format=json"
 
-const jsonCollections = "https://bienal-art-analyser.herokuapp.com/api/collection/?format=json"
+const jsonCollections = "http://art-decoder.bienal.berinfontes.com/api/collection/"
 
 
 
