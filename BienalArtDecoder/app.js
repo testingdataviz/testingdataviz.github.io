@@ -1,6 +1,6 @@
 const jsonURL = "http://art-decoder.bienal.berinfontes.com/api/collection/2/?format=json"
 
-const jsonCollections = "http://art-decoder.bienal.berinfontes.com/api/collection/"
+const jsonCollections = "http://art-decoder.bienal.berinfontes.com/api/collection/?format=json"
 
 
 
