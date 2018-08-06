@@ -34,9 +34,10 @@
                 Collection Number:
                 <div class="col-3">
 
-                    <input id="lowP" class="form-control form-control-sm" type="text" v-model="lowPoint" placeholder="Low Point" aria-label="High">
+                    <input id="lowP" class="form-control form-control-sm" type="text" v-model="lowPoint" placeholder="X" v-on:keydown="changeCollection" aria-label="High">
                 </div>
             </ul>
+
 
 
         </div>
@@ -46,13 +47,13 @@
 
 <div class="container-fluid pl-5 pr-5" >
 
-    <div v-for="(result, index) in filteredResults.images" v-cloak >
+    <div v-for="(result, index) in results.images" v-cloak >
         <!--Header = Microsoft Azure Caption-->
         <div class="card border-secondary mt-1" style="width: 100%;">
             <div class="card-header">
                 <div v-if="result.microsoftazure">
                     <div v-if="result.microsoftazure.main.description">
-                        <div v-if="result.microsoftazure.main.description.captions" style="display:flex; align-items: baseline;">
+                        <div v-if="result.microsoftazure.main.description.captions[0]" style="display:flex; align-items: baseline;">
                             <h4 class="mr-2 text-success" > #{{ index+1 }} </h4>
                             <h4 class="card-title">{{result.microsoftazure.main.description.captions[0].text}}</h4>
                         <span class="badge badge-info ml-2">{{result.microsoftazure.main.description.captions[0].confidence | toPercentage}}</span>
@@ -121,7 +122,7 @@
                                     </div>
 
                                     <!--This is Google safeSearch Annotation-->
-                                    <div class="row">
+                                    <div v-if="result.googlecloud.safeSearchAnnotation" class="row">
                                         <div class="col-md-auto">
                                             <h5 class="text-muted"> Safe Search Annotations: </h5>
                                         </div>
@@ -163,14 +164,14 @@
                                     <!--Best Guess Label-->
                                     <div class="row">
 
-                                        <div class="col-md-auto" style="display:flex; align-items: baseline;">
+                                        <div v-if="result.googlecloud.webDetection" class="col-md-auto" style="display:flex; align-items: baseline;">
                                             <h5 class="text-muted pr-2">Best Guess: </h5>
                                             <h5 > <strong>{{result.googlecloud.webDetection.bestGuessLabels[0].label}}</strong> </h5>
                                         </div>
                                     </div>
 
                                     <!--Visually Similar Images-->
-                                    <div class="row">
+                                    <div v-if="result.googlecloud.webDetection"  class="row">
                                     <h5 class="text-muted pr-2 col-md-auto">Visually Similar: </h5>
                                         <div class="col-md-auto"  v-for="(categ, categind) in result.googlecloud.webDetection.visuallySimilarImages">
                                             <div style="display:flex; align-items: baseline;">
@@ -187,7 +188,7 @@
                                             <h5 class="text-muted"> Associated Web Entities: </h5>
                                         </div>
 
-                                        <div class="col-md-auto"  v-for="(categ, categind) in result.googlecloud.webDetection.webEntities">
+                                        <div class="col-md-auto"  v-for="(categ, categind) in result.googlecloud.webDetection">
                                             <div style="display:flex; align-items: baseline;">
                                                 <h5 > {{categ.description}}</h5>
                                                 <span class="badge badge-success ml-2">{{categ.score | substringNumber('3')}}</span>
@@ -201,7 +202,9 @@
                                         <div class="col-md-auto" style="display:flex; align-items: baseline;">
                                             <h5 class="text-muted pr-2">Text: </h5>
                                             <h5 > <strong>  {{result.googlecloud.fullTextAnnotation.text}} </strong>  </h5>
+                                            <div v-if="result.googlecloud.fullTextAnnotation.pages[0].property">
                                             <span class="badge badge-light ml-2">{{result.googlecloud.fullTextAnnotation.pages[0].property.detectedLanguages[0].languageCode }}</span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -382,11 +385,11 @@
 
 
                                 <!--YOLO RESULTS-->
-                                <!--<div  class="tab-pane fade"  :id="'nav-yolo' + index" role="tabpanel" aria-labelledby="nav-yolo">-->
-                                    <!--<img v-bind:src="result.linkImage.replace('https://s3.amazonaws.com/glitchvisualizer/', 'https://s3.amazonaws.com/glitchvisualizer/yolot25/').replace('.jpg','.png')"  class="img-fluid" alt="Responsive image">-->
-                                    <!--<br>-->
-                                    <!--<a target="_blank" v-bind:href="result.linkImage.replace('https://s3.amazonaws.com/glitchvisualizer/', 'https://s3.amazonaws.com/glitchvisualizer/yolot1/').replace('.jpg','.png')">Fake YOLO</a>-->
-                                <!--</div>-->
+                                <div  class="tab-pane fade"  :id="'nav-yolo' + index" role="tabpanel" aria-labelledby="nav-yolo">
+                                    <a v-bind:href="result.yolo_image" data-toggle="lightbox">
+                                        <img v-bind:src="result.yolo_image"  class="img-fluid" alt="Responsive image">
+                                    </a>
+                                </div>
 
 
 

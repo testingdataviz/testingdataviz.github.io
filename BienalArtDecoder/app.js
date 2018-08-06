@@ -1,6 +1,7 @@
-const jsonURL = "http://art-decoder.bienal.berinfontes.com/api/collection/2/?format=json"
+const jsonURL = "https://art-decoder.bienal.berinfontes.com/api/collection/3/?format=json"
+const jsonURLcrop = "https://art-decoder.bienal.berinfontes.com/api/collection/"
 
-const jsonCollections = "http://art-decoder.bienal.berinfontes.com/api/collection/?format=json"
+const jsonCollections = "https://art-decoder.bienal.berinfontes.com/api/collection/?format=json"
 
 
 
@@ -34,6 +35,14 @@ const vm = new Vue({
                 this.collresults =  preColl;
 
             }).catch( error => { console.log(error); });
+        },
+        changeCollection() {
+            this.results = [];
+            axios.get(jsonURLcrop + this.lowPoint + "/?format=json").then((response) => {
+                preRes =  response.data;
+                this.results =  preRes;
+            }).catch( error => { console.log(error); });
+
         }
     },
     filters: {
@@ -71,18 +80,6 @@ const vm = new Vue({
                 // in the case of redComp, greenComp and blueComp are a vue prop or data
                 color : `rgb(${red}, ${green}, ${blue});`,
             };
-        },
-        filteredResults: function () {
-
-            if (this.highPoint - this.lowPoint > 150)
-                {
-
-                }
-            else {
-                angaba = this.results;
-                return angaba;
-            }
-
         },
         componentToHex: function(c) {
             var hex = c.toString(16);
