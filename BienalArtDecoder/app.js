@@ -12,7 +12,7 @@ const vm = new Vue({
         collresults: [],
         value: 0,
         search: '',
-        lowPoint: 1,
+        lowPoint: 2,
         highPoint: 10,
         turkResults: [],
         workResults: [],
