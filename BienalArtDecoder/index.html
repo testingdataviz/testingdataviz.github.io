@@ -38,6 +38,9 @@
                 </div>
             </ul>
 
+            <h5 style="display:flex; align-items: baseline; color: #eaf1f1">  Collection {{lowPoint}}  </h5>
+            <h5 style="display:flex; align-items: baseline; color: #eaf1f1" v-if="results.images"> has {{results.images.length}} results.</h5>
+            <h5 style="display:flex; align-items: baseline; color: #eaf1f1" v-else>is loading or has no results.</h5>
 
 
         </div>
@@ -46,6 +49,8 @@
 
 
 <div class="container-fluid pl-5 pr-5" >
+
+
 
     <div v-for="(result, index) in results.images" v-cloak >
         <!--Header = Microsoft Azure Caption-->
