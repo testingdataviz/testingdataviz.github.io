@@ -1,4 +1,4 @@
-const jsonURL = "https://art-decoder.bienal.berinfontes.com/api/collection/3/?format=json"
+const jsonURL = "https://art-decoder.bienal.berinfontes.com/api/collection/1/?format=json"
 const jsonURLcrop = "https://art-decoder.bienal.berinfontes.com/api/collection/"
 
 const jsonCollections = "https://art-decoder.bienal.berinfontes.com/api/collection/?format=json"
@@ -12,7 +12,7 @@ const vm = new Vue({
         collresults: [],
         value: 0,
         search: '',
-        lowPoint: 2,
+        lowPoint: 1,
         highPoint: 10,
         turkResults: [],
         workResults: [],
