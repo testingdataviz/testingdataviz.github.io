@@ -502,16 +502,23 @@
                                 <!--DENSECAP RESULTS-->
                                 <div  class="tab-pane fade"  :id="'nav-dens' + index" role="tabpanel" aria-labelledby="nav-dens">
 
+                                    <a v-bind:href="result.dense_cap_image" data-toggle="lightbox">
+                                        <img v-bind:src="result.dense_cap_image"  class="img-fluid" alt="Responsive image">
+                                    </a>
+
+
                                     <div class="row">
                                         <div class="col-md-auto">
                                             <h5 class="text-muted"> DenseCap Results: </h5>
                                         </div>
+
                                         <div class="col-md-auto"  v-for="captions in result.deepAi.DenseCap.output.captions">
                                             <div style="display:flex; align-items: baseline;" v-if="captions.confidence > 0">
                                                 <h5 > {{captions.caption}} </h5>
                                             </div>
                                         </div>
                                     </div>
+                                    <a v-bind:href="result.dense_cap_full_image"> DenseCap All Results</a>
 
                                 </div>
 
